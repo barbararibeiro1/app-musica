@@ -10,13 +10,16 @@ type InputLabelProps = {
 function InputLabel({ name, placeholder, value, onChange }: InputLabelProps) {
   return (
     <div className="form_group">
-      <label htmlFor={ name }></label>
+      <label htmlFor={ name } className="visually-hidden">
+        { placeholder }
+      </label>
       <input
+        data-testid="login-name-input"
         type="text"
         name={ name }
-        placeholder= { placeholder }
+        placeholder={ placeholder }
         value={ value }
-        onChange={ onChange}
+        onChange={ onChange }
       />
     </div>
   );
