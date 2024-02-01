@@ -55,7 +55,7 @@ export default function Search() {
       </button>
       {isLoading && <p>Carregando...</p> }
       <p>
-        Resultado de álbuns de: {lastSearch}
+        Resultado de álbuns de:{lastSearch}
       </p>
       {albums.length > 0 ? (
         <ul>
