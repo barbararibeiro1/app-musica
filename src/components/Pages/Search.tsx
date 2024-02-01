@@ -25,9 +25,11 @@ export default function Search() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setIsLoading(true);
+    setLastSearch(formSearch.search);
     try {
       const response = await searchAlbumsAPI(formSearch.search); setAlbums(response);
-      setLastSearch(formSearch.search);
+      console.log('Response:', response);
+      setAlbums(response);
       setIsLoading(false);
       setFormSeach({ search: '' });
     } catch (err) {
@@ -38,6 +40,7 @@ export default function Search() {
   return (
     <form onSubmit={ handleSubmit }>
       <InputLabel
+        id="search"
         data-testid="search-artist-input"
         name="search"
         placeholder="Digite a sua pesquisa?"
@@ -52,8 +55,7 @@ export default function Search() {
       </button>
       {isLoading && <p>Carregando...</p> }
       <p>
-        Resultado de álbuns de:
-        {lastSearch}
+        Resultado de álbuns de: {lastSearch}
       </p>
       {albums.length > 0 ? (
         <ul>
