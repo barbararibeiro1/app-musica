@@ -7,14 +7,15 @@ type InputLabelProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 };
 
-function InputLabel({ name, placeholder, value, onChange }: InputLabelProps) {
+function InputLabel({ 'data-testid': dataTestId, name,
+  placeholder, value, onChange }: InputLabelProps) {
   return (
     <div className="form_group">
       <label htmlFor={ name } className="visually-hidden">
         { placeholder }
       </label>
       <input
-        data-testid="login-name-input"
+        data-testid={ dataTestId }
         type="text"
         name={ name }
         placeholder={ placeholder }
