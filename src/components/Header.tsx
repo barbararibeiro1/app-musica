@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
-import { NavLink } from 'react-router-dom'
-import { getUser } from '../services/userAPI'
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { getUser } from '../services/userAPI';
 
 function Header() {
   const [userName, setUserName] = useState('');
@@ -9,7 +9,7 @@ function Header() {
   useEffect(() => {
     async function fetchUser() {
       const user = await getUser();
-      setUserName(user.name)
+      setUserName(user.name);
       setLoading(false);
     }
     fetchUser();
@@ -17,16 +17,16 @@ function Header() {
 
   return (
     <header data-testid="header-component">
-      <NavLink to='/search' data-testid='link-to-search'>Search</NavLink>
-      <NavLink to='/favorites' data-testid='link-to-favorites'>Favorites</NavLink>
-      <NavLink to='/profile' data-testid='link-to-profile'>Profile</NavLink>
-      {loading? (
+      <NavLink to="/search" data-testid="link-to-search">Search</NavLink>
+      <NavLink to="/favorites" data-testid="link-to-favorites">Favorites</NavLink>
+      <NavLink to="/profile" data-testid="link-to-profile">Profile</NavLink>
+      {loading ? (
         <p>Carregando...</p>
       ) : (
-        <p data-testid='header-user-name'>{userName}</p>
+        <p data-testid="header-user-name">{userName}</p>
       )}
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

@@ -1,14 +1,14 @@
-import React from 'react'
-import Header from './Header'
-import { Outlet } from 'react-router-dom'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from './Header';
 
-function Layout({ children }) {
+function Layout() {
   return (
     <div>
       <Header />
       <Outlet />
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
