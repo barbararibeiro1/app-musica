@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import getMusics from '../../services/musicsAPI';
 import { useParams } from 'react-router-dom';
+import getMusics from '../../services/musicsAPI';
 import { AlbumType, SongType } from '../../types';
 import MusicCard from '../Components/MusicCard';
 
 export default function Album() {
-  
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-
-  
   const [album, setAlbum] = useState<(AlbumType | null)>(null);
   const [songs, setSongs] = useState<SongType[]>([]);
 
@@ -18,9 +15,9 @@ export default function Album() {
       if (id) {
         setIsLoading(true);
         const data = await getMusics(id);
-        const [album, ...songs] = data;
-        setAlbum(album);
-        setSongs(songs);
+        const [fetchedAlbum, ...fetchedSongs] = data;
+        setAlbum(fetchedAlbum);
+        setSongs(fetchedSongs);
         setIsLoading(false);
       }
     }
@@ -28,16 +25,20 @@ export default function Album() {
   }, [id]);
 
   return (
-  <div>
-    {isLoading ? 'Carregando...' : (
-      <div>
-        <h2 data-testid="artist-name">{album?.artistName}</h2>
-        <h3 data-testid='album-name'>{album?.collectionName}</h3>
-        {songs.map(song => (
-        <MusicCard key={song.trackId} trackName={song.trackName} previewUrl={song.previewUrl} />
-        ))}
-      </div>
-    )}
-  </div>
-  )
-};
+    <div>
+      {isLoading ? 'Carregando...' : (
+        <div>
+          <h2 data-testid="artist-name">{album?.artistName}</h2>
+          <h3 data-testid="album-name">{album?.collectionName}</h3>
+          {songs.map((song) => (
+            <MusicCard
+              key={ song.trackId }
+              trackName={ song.trackName }
+              previewUrl={ song.previewUrl }
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
