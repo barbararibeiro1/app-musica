@@ -33,11 +33,11 @@ export default function Album() {
       <div>
         <h2 data-testid="artist-name">{album?.artistName}</h2>
         <h3 data-testid='album-name'>{album?.collectionName}</h3>
-        {songs.map(song => {
-          <MusicCard key={song.trackId} trackName={song.trackName} previewUrl={song.previewUrl} />
-        })}
+        {songs.map(song => (
+        <MusicCard key={song.trackId} trackName={song.trackName} previewUrl={song.previewUrl} />
+        ))}
       </div>
     )}
   </div>
+  )
 };
-
