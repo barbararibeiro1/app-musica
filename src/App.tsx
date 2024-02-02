@@ -1,17 +1,21 @@
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/Pages/Login';
 import Search from './components/Pages/Search';
 import Album from './components/Pages/Album';
-import NotFound from './components/Pages/NotFound';
+import Layout from './components/Layout';
 
 function App() {
   return (
+    <>
+    <p>Trybetunes</p>
     <Routes>
       <Route path="/" element={ <Login /> } />
-      <Route path="/search" element={ <Search /> } />
-      <Route path="/album/:id" element={ <Album /> } />
-      <Route path="/*" element={ <NotFound /> } />
+      <Route element={ <Layout /> }>
+        <Route path="/search" element={ <Search /> } />
+        <Route path="/album/:id" element={ <Album /> } />
+      </Route>
     </Routes>
+  </>
   );
 }
 

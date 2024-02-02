@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import InputLabel from '../Components/InputLabel';
+import InputLabel from '../Functions/InputLabel';
 import { createUser } from '../../services/userAPI';
 
 // type PropsForm = {

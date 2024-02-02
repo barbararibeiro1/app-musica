@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import getMusics from '../../services/musicsAPI';
 import { AlbumType, SongType } from '../../types';
-import MusicCard from '../Components/MusicCard';
+import MusicCard from '../Functions/MusicCard';
 
 export default function Album() {
   const { id } = useParams();
